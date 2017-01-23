@@ -14,15 +14,16 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
-  articleController.loadById = function(ctx, next) {
+  articleController.loadById = function(ctx, next) { //passed to page.js in routes.js, creates matching paths /article/:id
     var articleData = function(article) {
       ctx.articles = article;
       next();
     };
-    Article.findWhere('id', ctx.params.id, articleData);
+    Article.findWhere('id', ctx.params.id, articleData);//created in article.js, pulls data from SQL based on filed and value
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  //passed to page.js in routes.js, creates matching paths /author/:authorName
   articleController.loadByAuthor = function(ctx, next) {
     var authorData = function(articlesByAuthor) {
       ctx.articles = articlesByAuthor;
@@ -35,6 +36,7 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  //passed to page.js in routes.js, creates matching paths  /category/:categoryName
   articleController.loadByCategory = function(ctx, next) {
     var categoryData = function(articlesInCategory) {
       ctx.articles = articlesInCategory;
@@ -45,6 +47,7 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  //loads all articles for the home page
   articleController.loadAll = function(ctx, next) {
     var articleData = function(allArticles) {
       ctx.articles = Article.allArticles;

@@ -18,6 +18,7 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  //populates author and category filters which are then called when articleController.index is called to load index page in routes.js
   articleView.populateFilters = function() {
     var options;
     var template = Handlebars.compile($('#option-template').text());
@@ -37,6 +38,8 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  // this filters through articles based on chosen criteria. Just like prev method, it is tied into
+  //articleController.index and is called whenever index page is loaded
   articleView.handleFilters = function() {
     $('#filters').one('change', 'select', function() {
       var resource = this.id.replace('-filter', '');
